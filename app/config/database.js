@@ -1,11 +1,11 @@
-const db= require('pg');
+const { Client } = require('pg');
 
-const pg = {
-    host:localhost,
-    username:'root',
-    password:'root',
-    port:5432,
-    database: 'open_elective'
-}
+const postgres = new Client({
+    host: 'localhost',
+    port: 5432,
+    user: 'postgres',
+    password: 'root',
+    database: 'open_elective',
+});
 
-module.exports ={ pg };
+module.exports = { postgres };

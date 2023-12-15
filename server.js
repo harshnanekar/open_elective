@@ -1,16 +1,15 @@
 const express= require('express');
 const app=express();
 const bodyparser = require('body-parser');
-const router = require('./app/router/route.js');
-const {pg} = require('pg');
-pg.connect();
+const { postgres } = require('./app/config/database.js');
+const indexRouter = require('./app/router/index.router.js')
+postgres.connect();
 
 app.set('view engine','ejs');
 app.set('views','app/views/pages');
 
 app.use(bodyparser.json());
-app.use('/api',router);
+    app.use(indexRouter)
 app.use(express.static('public'));
-
 
 app.listen(8080);

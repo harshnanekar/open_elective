@@ -13,10 +13,9 @@
  .maindiv{
    display:flex;
    justify-content: center;
-   margin-top:50px;
+   margin-top:100px;
    box-sizing: border-box;
    width:100vw;
-   overflow: hidden;
  }
  .innerdiv{
     background-color: white;
@@ -67,12 +66,12 @@ font-family: 'Poppins', sans-serif;
      <div style="margin-top:25%;" class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-8" >
      
     <i class="fi fi-rr-user" ></i><input id="username" style=" margin-bottom:40px;width:66%;" placeholder="LoginId" type="text"/></br>
-    <i class="fi fi-rr-lock" ></i><input  id="pass" placeholder="Password" type="text" style="width:66%;"/></br>
+    <i class="fi fi-rr-lock" ></i><input  id="pass" placeholder="Password" type="password" style="width:66%;"/></br>
 
     </div>
     
     <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-8"><a href="#" style="position:absolute;right:25%;font-size:18px; color:#018749; width:20%;text-decoration:none;" >Forgot?</a></br>
-        <button style="padding:5px; font-weight:bold; background:#1CAC78; border:0; border-radius:10px; color:white; width:72%; position:relative; overflow:hidden; left:30px; top:20px; margin-top:15px;" id="login" type="submit">Submit</button>
+        <button style="padding:5px; font-weight:bold; background:#1CAC78; border:0; border-radius:10px; color:white; width:70%; position:relative; overflow:hidden; left:30px; top:50px; margin-top:15px;" id="login" type="submit">Submit</button>
    </div>
     </div>
 
@@ -83,17 +82,38 @@ font-family: 'Poppins', sans-serif;
 
 <script>
 
-   //login 
+   //login Authentication
    document.getElementById('login').addEventListener('click',()=>{
 
      let username = document.getElementById('username').value;
      let password = document.getElementById('pass').value;
 
-     let obj={username,password};
+     let obj={
+     username,
+     password
+     };
 
-     console.log(obj);
+     loginauth('/api/login','POST', obj)
+
    });
 
+   async function loginauth(url,method,obj){
+
+     const fetchOptions = {
+      method : method,
+      body : JSON.stringify(obj),
+      headers : {
+         'Content-Type': 'application/json'
+      },
+     }
+
+     const response = await fetch(url,fetchOptions);
+
+     if(response.ok) {
+
+     }
+
+   }
   
 </script>
 </html>
