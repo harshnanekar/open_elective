@@ -1,7 +1,7 @@
-const express = require('express').Router();
+const apiRouter = require('express').Router();
 const controller = require('../controller/user.js');
 
-express.get('/loginPage',controller.loginPage);
-express.post('/login',controller.login);
+apiRouter.get('/loginPage',controller.loginPage);
+apiRouter.post('/login',controller.login);
 
-module.exports = express;
+module.exports = apiRouter;
